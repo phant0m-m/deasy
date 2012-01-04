@@ -1,0 +1,75 @@
+2012/01/04 13:26:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "about" was not found.' in /home/phantom/Develop/deasy/library/yii/web/actions/CViewAction.php:113
+Stack trace:
+#0 /home/phantom/Develop/deasy/library/yii/web/actions/CViewAction.php(124): CViewAction->resolveView('about')
+#1 /home/phantom/Develop/deasy/library/yii/web/actions/CAction.php(75): CViewAction->run()
+#2 /home/phantom/Develop/deasy/library/yii/web/CController.php(309): CAction->runWithParams(Array)
+#3 /home/phantom/Develop/deasy/library/yii/web/CController.php(287): CController->runAction(Object(CViewAction))
+#4 /home/phantom/Develop/deasy/library/yii/web/CController.php(266): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/phantom/Develop/deasy/library/yii/web/CWebApplication.php(276): CController->run('page')
+#6 /home/phantom/Develop/deasy/library/yii/web/CWebApplication.php(135): CWebApplication->runController('site/page')
+#7 /home/phantom/Develop/deasy/library/yii/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /home/phantom/Develop/deasy/public/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=site/page&view=about
+HTTP_REFERER=http://deasy.local/index.php?r=site/contact
+---
+2012/01/04 13:26:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "about" was not found.' in /home/phantom/Develop/deasy/library/yii/web/actions/CViewAction.php:113
+Stack trace:
+#0 /home/phantom/Develop/deasy/library/yii/web/actions/CViewAction.php(124): CViewAction->resolveView('about')
+#1 /home/phantom/Develop/deasy/library/yii/web/actions/CAction.php(75): CViewAction->run()
+#2 /home/phantom/Develop/deasy/library/yii/web/CController.php(309): CAction->runWithParams(Array)
+#3 /home/phantom/Develop/deasy/library/yii/web/CController.php(287): CController->runAction(Object(CViewAction))
+#4 /home/phantom/Develop/deasy/library/yii/web/CController.php(266): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/phantom/Develop/deasy/library/yii/web/CWebApplication.php(276): CController->run('page')
+#6 /home/phantom/Develop/deasy/library/yii/web/CWebApplication.php(135): CWebApplication->runController('site/page')
+#7 /home/phantom/Develop/deasy/library/yii/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /home/phantom/Develop/deasy/public/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=site/page&view=about
+HTTP_REFERER=http://deasy.local/index.php?r=site/page&view=about
+---
+2012/01/04 13:26:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "about" was not found.' in /home/phantom/Develop/deasy/library/yii/web/actions/CViewAction.php:113
+Stack trace:
+#0 /home/phantom/Develop/deasy/library/yii/web/actions/CViewAction.php(124): CViewAction->resolveView('about')
+#1 /home/phantom/Develop/deasy/library/yii/web/actions/CAction.php(75): CViewAction->run()
+#2 /home/phantom/Develop/deasy/library/yii/web/CController.php(309): CAction->runWithParams(Array)
+#3 /home/phantom/Develop/deasy/library/yii/web/CController.php(287): CController->runAction(Object(CViewAction))
+#4 /home/phantom/Develop/deasy/library/yii/web/CController.php(266): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/phantom/Develop/deasy/library/yii/web/CWebApplication.php(276): CController->run('page')
+#6 /home/phantom/Develop/deasy/library/yii/web/CWebApplication.php(135): CWebApplication->runController('site/page')
+#7 /home/phantom/Develop/deasy/library/yii/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /home/phantom/Develop/deasy/public/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=site/page&view=about
+HTTP_REFERER=http://deasy.local/index.php?r=site/contact
+---
+2012/01/04 13:26:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "about" was not found.' in /home/phantom/Develop/deasy/library/yii/web/actions/CViewAction.php:113
+Stack trace:
+#0 /home/phantom/Develop/deasy/library/yii/web/actions/CViewAction.php(124): CViewAction->resolveView('about')
+#1 /home/phantom/Develop/deasy/library/yii/web/actions/CAction.php(75): CViewAction->run()
+#2 /home/phantom/Develop/deasy/library/yii/web/CController.php(309): CAction->runWithParams(Array)
+#3 /home/phantom/Develop/deasy/library/yii/web/CController.php(287): CController->runAction(Object(CViewAction))
+#4 /home/phantom/Develop/deasy/library/yii/web/CController.php(266): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/phantom/Develop/deasy/library/yii/web/CWebApplication.php(276): CController->run('page')
+#6 /home/phantom/Develop/deasy/library/yii/web/CWebApplication.php(135): CWebApplication->runController('site/page')
+#7 /home/phantom/Develop/deasy/library/yii/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /home/phantom/Develop/deasy/public/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=site/page&view=about
+HTTP_REFERER=http://deasy.local/index.php?r=site/index
+---
+2012/01/04 13:27:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "about" was not found.' in /home/phantom/Develop/deasy/library/yii/web/actions/CViewAction.php:113
+Stack trace:
+#0 /home/phantom/Develop/deasy/library/yii/web/actions/CViewAction.php(124): CViewAction->resolveView('about')
+#1 /home/phantom/Develop/deasy/library/yii/web/actions/CAction.php(75): CViewAction->run()
+#2 /home/phantom/Develop/deasy/library/yii/web/CController.php(309): CAction->runWithParams(Array)
+#3 /home/phantom/Develop/deasy/library/yii/web/CController.php(287): CController->runAction(Object(CViewAction))
+#4 /home/phantom/Develop/deasy/library/yii/web/CController.php(266): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/phantom/Develop/deasy/library/yii/web/CWebApplication.php(276): CController->run('page')
+#6 /home/phantom/Develop/deasy/library/yii/web/CWebApplication.php(135): CWebApplication->runController('site/page')
+#7 /home/phantom/Develop/deasy/library/yii/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /home/phantom/Develop/deasy/public/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=site/page&view=about
+HTTP_REFERER=http://deasy.local/index.php
+---

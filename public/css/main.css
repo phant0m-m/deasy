@@ -50,6 +50,7 @@ body
 #mainmenu
 {
 	background:white url(bg.gif) repeat-x left top;
+    height: 25px;
 }
 
 #mainmenu ul

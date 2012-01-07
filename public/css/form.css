@@ -36,8 +36,13 @@
 
 div.form
 {
-    left: 400px;
     position: relative;
+}
+
+#loginform
+{
+    position: relative;
+    left: 400px;
 }
 
 div.form input,
@@ -159,4 +164,44 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 {
 	clear: left;
 	padding-left: 110px;
+}
+
+#domainList {
+    padding-bottom: 20px;
+}
+
+.editDomainButton {
+    background-image: url("/img/edit.png");
+    width: 16px;
+    height: 16px;
+    display: inline;
+    position: absolute;
+    margin-left: 10px;
+}
+
+.removeDomainButton {
+    background-image: url("/img/delete.png");
+    width: 16px;
+    height: 16px;
+    display: inline;
+    position: absolute;
+    margin-left: 36px;
+}
+
+.addDomain {
+    background-image: url("/img/addDomain.png");
+    width: 32px;
+    height: 32px;
+    display: inline;
+    position: absolute;
+    margin-left: 25px;
+    margin-bottom: 5px;
+}
+
+.domainRecord {
+    margin: 10px;
+}
+
+div.domainRecord a {
+
 }

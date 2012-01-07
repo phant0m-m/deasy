@@ -24,17 +24,18 @@
 	<div id="header">
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
-    <?php if (!Yii::app()->user->isGuest) { ?>
+
 	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
+       <?php if (!Yii::app()->user->isGuest) {
+	    $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
+				array('label'=>'Domains list', 'url'=>array('/site/index')),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'))
 			),
-		)); ?>
+		));
+        } ?>
 	</div><!-- mainmenu -->
-    <?php } ?>
+
 
 	<?php echo $content; ?>
 

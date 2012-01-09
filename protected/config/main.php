@@ -36,30 +36,36 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
-		// uncomment the following to enable URLs in path-format
-		/*
+
+        /*'clientScript' => array(
+            'scriptMap'=> array(
+                'jquery.js'=>false,
+            )
+        ),*/
+
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                'addVhost' => 'site/addVhost',
+                'editVhost/<vhostId:\d+>' => 'site/editVhost',
+                'ajax/remVhost/<vhostId:\d+>' => 'ajax/removeVhost',
+                'makeVhostConfig' => 'site/makeVhostConfig',
 			),
 		),
-		*/
-		'db'=>array(
+
+		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
+		),*/
 		// uncomment the following to use a MySQL database
-		/*
+
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'pgsql:host=localhost;dbname=deasy',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
+			'username' => 'deasy',
+			'password' => 'JDWy2823y',
 			'charset' => 'utf8',
 		),
-		*/
+
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
@@ -85,6 +91,9 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
+        'serverBaseHost' => 'local',
+        'serverIp' => '192.168.174.141',
 		'adminEmail'=>'webmaster@example.com',
+        'vhostPerPage' => 30,
 	),
 );

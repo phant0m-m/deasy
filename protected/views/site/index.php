@@ -1,16 +1,35 @@
 <?php $this->pageTitle=Yii::app()->name; ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<h1>
+    <i>The list of your domains</i>
+    <?php echo CHtml::link("" , Yii::app()->createUrl("addVhost"), array('class'=>'addVhost' , 'title'=>'Add new Virtual host')); ?>
+    <?php echo CHtml::link("" , Yii::app()->createUrl("makeVhostConfig"), array('class'=>'vhostConfig' , 'title'=>'Create config for you local system')); ?>
+</h1>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'domain-list-form',
+	'enableClientValidation'=>true,
+	'clientOptions'=>array(
+		'validateOnSubmit'=>true,
+	),
+)); ?>
+    <div id="domainListForm">
+        <div id="domainList">
+            <?php $this->widget('zii.widgets.CListView', array(
+            	'dataProvider'=>$dataProvider,
+            	'itemView'=>'_vhostLine',
+            	'template'=>"{items}\n{pager}",
+            )); ?>
+        </div>
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <tt><?php echo __FILE__; ?></tt></li>
-	<li>Layout file: <tt><?php echo $this->getLayoutFile('main'); ?></tt></li>
-</ul>
+        <div class="row buttons">
+            <?php
+                echo CHtml::ajaxSubmitButton('Remove selected vhosts',Yii::app()->createUrl("ajax/remVhostList"),array('beforeSend' => 'preRemoveVhostList','success'=>'onRemoveVhostList','dataType'=>'json'));
+                echo CHtml::resetButton('Reset');
+            ?>
+       	</div>
+    </div>
+    <div>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+    </div>
+<?php $this->endWidget(); ?>

@@ -188,20 +188,57 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
     margin-left: 36px;
 }
 
-.addDomain {
-    background-image: url("/img/addDomain.png");
-    width: 32px;
-    height: 32px;
-    display: inline;
+.addVhost {
+    background-image: url("/img/export.png");
+    width: 24px;
+    height: 24px;
     position: absolute;
-    margin-left: 25px;
-    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-top: 5px;
 }
 
-.domainRecord {
+.vhostConfig {
+    background-image: url("/img/hostsConf.png");
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    margin-left: 50px;
+    margin-top: 4px;
+}
+
+#copyConfig {
+    background-image: url("/img/copy.png");
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 2px;
+}
+
+hostsConf.png
+
+.vhostRecord {
     margin: 10px;
 }
 
-div.domainRecord a {
+#localConfig {
+    border-style: dashed;
+    border-width: 1px;
+    padding: 10px;
+    background-color: #fafafa;
+    font:1em 'andale mono', 'lucida console', monospace; line-height:1.5;
+}
 
+#localConfig p {
+    margin: 0;
+}
+
+.vhostConfRecord  {
+    word-spacing: 50px;
+    margin-left: 50px;
+}
+
+.vhostRecord  {
+    margin-bottom: 5px;
+    margin-left: 5px;
 }

@@ -2,17 +2,14 @@
 
 class SiteController extends Controller
 {
+    protected $_vhost;
+
 	/**
 	 * Declares class-based actions.
 	 */
 	public function actions()
 	{
 		return array(
-			// captcha action renders the CAPTCHA image displayed on the contact page
-			'captcha'=>array(
-				'class'=>'CCaptchaAction',
-				'backColor'=>0xFFFFFF,
-			),
 			// page action renders "static" pages stored under 'protected/views/site/pages'
 			// They can be accessed via: index.php?r=site/page&view=FileName
 			'page'=>array(
@@ -39,7 +36,7 @@ class SiteController extends Controller
     public function accessRules()
     {
             return array(
-                    array('allow',  // allow all users to access 'index' and 'view' actions.
+                    array('allow',  // allow all users to access 'login' actions.
                             'actions'=>array('login'),
                             'users'=>array('*'),
                     ),
@@ -59,9 +56,21 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+        $criteria=new CDbCriteria(array(
+      			'condition'=>'owner_id='.Yii::app()->user->getId(),
+      			'order'=>'hostname DESC'
+      	));
+
+        $dataProvider=new CActiveDataProvider('Vhost', array(
+      			'pagination'=>array(
+      		    'pageSize'=>Yii::app()->params['vhostPerPage'],
+      			),
+      			'criteria'=>$criteria,
+      	));
+
+		$this->render('index', array(
+					'dataProvider'=>$dataProvider,
+				));
 	}
 
 	/**
@@ -79,24 +88,67 @@ class SiteController extends Controller
 	}
 
 	/**
-	 * Displays the contact page
+	 * Add/Edit domain
 	 */
-	public function actionContact()
+	public function actionEditVhost()
 	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$headers="From: {$model->email}\r\nReply-To: {$model->email}";
-				mail(Yii::app()->params['adminEmail'],$model->subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
-			}
-		}
-		$this->render('contact',array('model'=>$model));
-	}
+        $model = $this->_loadVhost();
+        if(isset($_POST['Vhost'])) {
+            $model->attributes=$_POST['Vhost'];
+            if($model->save()) {
+                Yii::app()->user->setFlash('vhostChanged','Your vhost was successfully updated!');
+            }
+        }
+        $this->render('vhost',array('model'=>$model));
+    }
+
+    public function actionAddVhost()
+    {
+        $model = new Vhost();
+        if(isset($_POST['Vhost'])) {
+            $_POST['Vhost']['owner_id'] = Yii::app()->user->getId();
+            $model->attributes=$_POST['Vhost'];
+
+            if($model->save()) {
+                Yii::app()->user->setFlash('vhostChanged','Your vhost was successfully created!');
+            }
+        }
+        $this->render('vhost',array('model'=>$model));
+    }
+
+    protected function _loadVhost()
+    {
+        if($this->_vhost===null)
+      	{
+            if(isset($_GET['vhostId'])) {
+                if(Yii::app()->user->isGuest) {
+                    throw new CHttpException(404,'The requested page does not exist.');
+                }
+                $this->_vhost=Vhost::model()->findByPk($_GET['vhostId'], 'owner_id=' . Yii::app()->user->getId());
+            }
+
+            if($this->_vhost===null)
+                throw new CHttpException(404,'The requested page does not exist.');
+        }
+        return $this->_vhost;
+    }
+
+    public function actionMakeVhostConfig()
+    {
+        $criteria=new CDbCriteria(array(
+      			'condition'=>'owner_id='.Yii::app()->user->getId(),
+      			'order'=>'hostname DESC'
+      	));
+
+        $dataProvider=new CActiveDataProvider('VhostWrapper', array(
+      			'criteria'=>$criteria,
+      	));
+
+		$this->render('localConfig', array(
+					'dataProvider' => $dataProvider,
+                    'baseHostname' => Yii::app()->params['serverBaseHost'],
+				));
+    }
 
 	/**
 	 * Displays the login page

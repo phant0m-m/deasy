@@ -14,6 +14,12 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
+    <?php
+        Yii::app()->clientScript->registerScriptFile("/js/jquery.simplemodal.js");
+        Yii::app()->clientScript->registerScriptFile("/js/ZeroClipboard.js");
+        Yii::app()->clientScript->registerScriptFile("/js/deasy.js");
+    ?>
+
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 

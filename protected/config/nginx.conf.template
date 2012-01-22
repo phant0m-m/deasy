@@ -1,0 +1,28 @@
+#************************************ [__SERVER_NAME__] start ***********************************
+server {
+        listen   80;
+
+        server_name [__SERVER_NAME__];
+
+        root  [__ROOT_PATH__];
+        index index.php;
+
+        fastcgi_index  index.php;
+        include  fastcgi_params;
+        fastcgi_param  SCRIPT_FILENAME  $document_root/index.php;
+        fastcgi_param  SERVER_NAME      $host;
+
+        location  @php {
+                fastcgi_pass  php-local;
+                sendfile  off;
+        }
+
+        location  / {
+                location ~ \.php$ {
+                        fastcgi_pass  php-local;
+                        sendfile  off;
+                }
+                try_files  $uri @php;
+        }
+}
+#************************************ [__SERVER_NAME__] end *************************************

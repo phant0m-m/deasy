@@ -20,8 +20,6 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
-
 	<div class="row">
 		<?php echo $form->labelEx($model,'hostname'); ?>
 		<?php echo $form->textField($model,'hostname',array('size'=>50,'maxlength'=>64)); ?>
@@ -33,13 +31,6 @@
     	<?php echo $form->textField($model,'path_to',array('size'=>60,'maxlength'=>256)); ?>
     	<?php echo $form->error($model,'path_to'); ?>
     </div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'aliases'); ?>
-		<?php echo $form->textField($model,'aliases',array('size'=>60,'maxlength'=>256)); ?>
-		<?php echo $form->error($model,'aliases'); ?>
-	</div>
-
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'info'); ?>

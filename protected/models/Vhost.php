@@ -42,6 +42,8 @@ class Vhost extends CActiveRecord
    			array('hostname', 'length', 'max'=>64),
             array('path_to, aliases', 'length', 'max'=>256),
             array('info', 'length', 'max'=>500),
+            array('path_to', 'DirectoryExistValidator'),
+            array('hostname ','checkHostnameUniqueness')
    		);
    	}
 
@@ -51,7 +53,7 @@ class Vhost extends CActiveRecord
    	public function relations()
    	{
    		return array(
-   			'owner_id' => array(self::BELONGS_TO, 'User', 'id'),
+   			'owner' => array(self::BELONGS_TO, 'User', 'owner_id'),
    		);
    	}
 
@@ -72,6 +74,14 @@ class Vhost extends CActiveRecord
 
     public function getFullUrl()
     {
-        return $this->hostname . '.' . Yii::app()->user->getName() . '.' . Yii::app()->params['serverBaseHost'];
+        return $this->hostname . '.' . $this->owner->username . '.' . Yii::app()->params['serverBaseHost'];
+    }
+
+    public function checkHostnameUniqueness($attribute,$params)
+    {
+        $condition = "hostname = '{$this->hostname}' AND owner_id = {$this->owner_id}";
+        if ($this->id) $condition .= "  AND id != {$this->id}";
+        if(Vhost::model()->find($condition))
+            $this->addError($attribute,"Hostname {$this->hostname} has already been taken.");
     }
 }

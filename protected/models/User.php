@@ -8,7 +8,7 @@ class User extends CActiveRecord
     /**
    	 * The followings are the available columns in table 'users':
    	 * @var integer $id
-   	 * @var string $name
+   	 * @var string $username
    	 * @var string $password
    	 * @var string $user_type
    	 */

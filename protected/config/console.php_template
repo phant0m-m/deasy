@@ -1,0 +1,38 @@
+<?php
+
+// This is the configuration for yiic console application.
+// Any writable CConsoleApplication properties can be configured here.
+return array(
+	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
+	'name'=>'Deasy - easy virtual host management tool',
+
+    // autoloading model and component classes
+   	'import'=>array(
+   		'application.models.*',
+   		'application.components.*',
+        'application.helpers.*',
+   	),
+
+	// application components
+	'components'=>array(
+        'db'=>array(
+      			'connectionString' => 'pgsql:host=localhost;dbname=database_name',
+      			'emulatePrepare' => true,
+      			'username' => 'username',
+      			'password' => 'password',
+      			'charset' => 'utf8',
+      		),
+	),
+
+    // application-level parameters that can be accessed
+   	// using Yii::app()->params['paramName']
+   	'params'=>array(
+           'serverBaseHost' => 'local',
+           'serverIp' => 'set_you_server_ip_here',
+   		   'adminEmail'=>'webmaster@example.com',
+           'configTemplatePath' => 'path_to_nginx.conf.template',
+           'configOutputPath' => 'path_to_newly_created_config',
+           'configDestinationPath' => 'config_destination_path'  // like '/etc/nginx/sites-enabled/deasy.conf',
+           'serverRestartCommand' => 'webserver_restart_command' // like '/etc/init.d/nginx restart'
+   	),
+);

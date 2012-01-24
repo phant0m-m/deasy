@@ -1,8 +1,9 @@
 <?php
 /**
+ * Virtual host class
+ * Represent the item of virtual host
  * @author Phant0m_m
  */
-
 class Vhost extends CActiveRecord
 {
     /**
@@ -11,7 +12,6 @@ class Vhost extends CActiveRecord
      * @var integer $owner_id
    	 * @var string $hostname
    	 * @var string $path_to
-   	 * @var string $aliases
      * @var string $info
    	 */
 
@@ -40,7 +40,7 @@ class Vhost extends CActiveRecord
    		return array(
    			array('hostname, path_to, owner_id', 'required'),
    			array('hostname', 'length', 'max'=>64),
-            array('path_to, aliases', 'length', 'max'=>256),
+            array('path_to', 'length', 'max'=>256),
             array('info', 'length', 'max'=>500),
             array('path_to', 'DirectoryExistValidator'),
             array('hostname ','checkHostnameUniqueness')
@@ -72,11 +72,27 @@ class Vhost extends CActiveRecord
    		);
    	}
 
+    /**
+     * Return the full virtualhost name
+     * @return string url
+     */
     public function getFullUrl()
     {
         return $this->hostname . '.' . $this->owner->username . '.' . Yii::app()->params['serverBaseHost'];
     }
 
+    /**
+     * Return the IP, vhost is binded to
+     * @return {string} ip
+     */
+    public function getVhostIp()
+    {
+        return Yii::app()->params['serverIp'];
+    }
+
+    /**
+     * Validate the uniqueness of vhost/username combination
+     */
     public function checkHostnameUniqueness($attribute,$params)
     {
         $condition = "hostname = '{$this->hostname}' AND owner_id = {$this->owner_id}";
@@ -84,4 +100,6 @@ class Vhost extends CActiveRecord
         if(Vhost::model()->find($condition))
             $this->addError($attribute,"Hostname {$this->hostname} has already been taken.");
     }
+
+
 }

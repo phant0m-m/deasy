@@ -60,10 +60,10 @@ return array(
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
-			'connectionString' => 'pgsql:host=localhost;dbname=deasy',
+			'connectionString' => 'pgsql:host=localhost;dbname=database_name',
 			'emulatePrepare' => true,
-			'username' => 'deasy',
-			'password' => 'JDWy2823y',
+			'username' => 'username',
+			'password' => 'password',
 			'charset' => 'utf8',
 		),
 
@@ -91,9 +91,8 @@ return array(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
-		// this is used in contact page
-        'serverBaseHost' => 'local',
-        'serverIp' => '192.168.174.141',
+        'serverBaseHost' => 'set_you_server_base_host',
+        'serverIp' => 'set_you_server_ip_here',
 		'adminEmail'=>'webmaster@example.com',
         'vhostPerPage' => 30,
 	),

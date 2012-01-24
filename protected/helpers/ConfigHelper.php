@@ -1,8 +1,15 @@
 <?php
-
-
+/**
+ * Helper, allows to create the config, put it into
+ * appropriate place and restart web server
+ * @author Phant0m_m
+ */
 class ConfigHelper
 {
+    /**
+     * @static
+     * Create the new config file;
+     */
     public static function createConfig()
     {
         $configTemplate = file_get_contents(Yii::app()->params['configTemplatePath']);
@@ -18,6 +25,12 @@ class ConfigHelper
         file_put_contents(Yii::app()->params['configOutputPath'],$config);
     }
 
+    /**
+     * Apply the new config file
+     * @static
+     * @return bool
+     * @todo move to the separate bash script
+     */
     public static function applyConfig()
     {
         if (!file_exists(Yii::app()->params['configOutputPath'])) {

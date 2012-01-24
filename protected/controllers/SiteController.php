@@ -4,28 +4,14 @@ class SiteController extends Controller
 {
     protected $_vhost;
 
-	/**
-	 * Declares class-based actions.
-	 */
-	public function actions()
-	{
-		return array(
-			// page action renders "static" pages stored under 'protected/views/site/pages'
-			// They can be accessed via: index.php?r=site/page&view=FileName
-			'page'=>array(
-				'class'=>'CViewAction',
-			),
-		);
-	}
-
     /**
      * @return array action filters
      */
     public function filters()
     {
-            return array(
-                    'accessControl', // perform access control for CRUD operations
-            );
+        return array(
+            'accessControl', // perform access control for CRUD operations
+        );
     }
 
     /**
@@ -140,7 +126,7 @@ class SiteController extends Controller
       			'order'=>'hostname DESC'
       	));
 
-        $dataProvider=new CActiveDataProvider('VhostWrapper', array(
+        $dataProvider=new CActiveDataProvider('Vhost', array(
       			'criteria'=>$criteria,
       	));
 

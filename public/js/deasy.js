@@ -44,7 +44,6 @@ $(document).ready(function() {
            text += $.trim($('#localConfig #preVhostList').text())+"\n\n";
            $('.vhostConfRecord').each(function() {text += "\t" + $.trim($(this).text())+"\n"; return true;});
            text += $('#localConfig #postVhostList').text();
-           console.log(text);
            clip.setText(text);
        });
    }

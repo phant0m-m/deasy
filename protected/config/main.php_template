@@ -19,18 +19,6 @@ return array(
         'application.validators.*',
 	),
 
-	'modules'=>array(
-		// uncomment the following to enable the Gii tool
-		/*
-		'gii'=>array(
-			'class'=>'system.gii.GiiModule',
-			'password'=>'Enter Your Password Here',
-		 	// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
-		),
-		*/
-	),
-
 	// application components
 	'components'=>array(
 		'user'=>array(
@@ -45,6 +33,7 @@ return array(
         ),*/
 
 		'urlManager'=>array(
+		    'showScriptName' => false,
 			'urlFormat'=>'path',
 			'rules'=>array(
                 'addVhost' => 'site/addVhost',
@@ -53,11 +42,6 @@ return array(
                 'makeVhostConfig' => 'site/makeVhostConfig',
 			),
 		),
-
-		/*'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),*/
-		// uncomment the following to use a MySQL database
 
 		'db'=>array(
 			'connectionString' => 'pgsql:host=localhost;dbname=database_name',

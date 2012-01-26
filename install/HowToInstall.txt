@@ -1,0 +1,15 @@
+What is deasy?
+Deasy is a simple tools which allows you to make your development process easier.
+Just setup it on you development server and create a new virtual hosts fo new installations in just a few clicks.
+Deasy support multiuser mode, so all you developers will be able to work with the same tool.
+
+How to install?
+Just checkout the Deasy into you webserver root.
+Then change {APP_INSTALL_DIRECTORY}/protected/runtime and {APP_INSTALL_DIRECTORY}/public/assets to be owned by you
+webserver user.
+A proper database structure can be find in {APP_INSTALL_DIRECTORY}/install directory.
+You can choose between MySQL and PgSQL.
+Also you have to create {APP_INSTALL_DIRECTORY}/protected/console.php and {APP_INSTALL_DIRECTORY}/protected/main.php
+configs based on console.php_template and main.php_template files.
+
+Enjoy it!

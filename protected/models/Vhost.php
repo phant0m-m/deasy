@@ -54,6 +54,7 @@ class Vhost extends CActiveRecord
    	{
    		return array(
    			'owner' => array(self::BELONGS_TO, 'User', 'owner_id'),
+            'config' => array(self::HAS_ONE, 'VhostConfig', 'vhost_id'),
    		);
    	}
 

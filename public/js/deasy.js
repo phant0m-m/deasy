@@ -47,5 +47,9 @@ $(document).ready(function() {
            clip.setText(text);
        });
    }
+
+   $("#edit_config").click(function () {
+       $("#VhostConfig_config").attr("disabled",($("#edit_config").attr("checked") != 'checked'));
+    });
 });
 

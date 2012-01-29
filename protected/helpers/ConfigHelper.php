@@ -19,7 +19,7 @@ class ConfigHelper
         foreach ($vhosts as $vhost) {
             $config .= preg_replace(array('~\[__SERVER_NAME__\]~','~\[__ROOT_PATH__\]~'),
                 array($vhost->getFullUrl() , $vhost->path_to),
-                $configTemplate
+                is_object($vhost->config) ? $vhost->config->config : $configTemplate
             );
         }
         file_put_contents(Yii::app()->params['configOutputPath'],$config);

@@ -78,28 +78,53 @@ class SiteController extends Controller
 	 */
 	public function actionEditVhost()
 	{
-        $model = $this->_loadVhost();
-        if(isset($_POST['Vhost'])) {
-            $model->attributes=$_POST['Vhost'];
-            if($model->save()) {
-                Yii::app()->user->setFlash('vhostChanged','Your vhost was successfully updated!');
-            }
-        }
-        $this->render('vhost',array('model'=>$model));
-    }
+        // @todo move to better place
+        Yii::app()->getClientScript()->registerCoreScript('jquery');
 
-    public function actionAddVhost()
-    {
-        $model = new Vhost();
-        if(isset($_POST['Vhost'])) {
+        $model = $this->_loadVhost();
+        $config = $model->config;
+
+        $form = new CForm('application.views.site._vhostFormConfig');
+        $form['vhost']->model = $model;
+        $form['config']->model = $config;
+
+        if($form->submitted('submit')) {
             $_POST['Vhost']['owner_id'] = Yii::app()->user->getId();
             $model->attributes=$_POST['Vhost'];
 
             if($model->save()) {
+                $config->attributes = $_POST['VhostConfig'];
+                $config->save();
                 Yii::app()->user->setFlash('vhostChanged','Your vhost was successfully created!');
             }
         }
-        $this->render('vhost',array('model'=>$model));
+        $this->render('vhost',array('form'=>$form));
+    }
+
+    public function actionAddVhost()
+    {
+        // @todo move to better place
+        Yii::app()->getClientScript()->registerCoreScript('jquery');
+
+        $model = new Vhost();
+        $config = VhostConfig::getDefaultConfig();
+
+        $form = new CForm('application.views.site._vhostFormConfig');
+        $form['vhost']->model = $model;
+        $form['config']->model = $config;
+
+        if($form->submitted('submit')) {
+            $_POST['Vhost']['owner_id'] = Yii::app()->user->getId();
+            $model->attributes=$_POST['Vhost'];
+
+            if($model->save()) {
+                $_POST['VhostConfig']['vhost_id'] = $model->id;
+                $config->attributes = $_POST['VhostConfig'];
+                $config->save();
+                Yii::app()->user->setFlash('vhostChanged','Your vhost was successfully created!');
+            }
+        }
+        $this->render('vhost',array('form'=>$form));
     }
 
     protected function _loadVhost()

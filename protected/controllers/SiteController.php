@@ -119,6 +119,9 @@ class SiteController extends Controller
         return $this->_vhost;
     }
 
+    /**
+     * Provide the config, which can be used with local host config, when there is no ability to change DNS
+     */
     public function actionMakeVhostConfig()
     {
         $criteria=new CDbCriteria(array(

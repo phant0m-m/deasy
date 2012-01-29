@@ -3,7 +3,7 @@
  * Ajax requests controller
  * Responsible for vhost removing
  */
-class AjaxController extends Controller
+class AjaxController extends CController
 {
     /**
      * @return array action filters

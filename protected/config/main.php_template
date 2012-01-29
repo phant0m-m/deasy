@@ -79,6 +79,7 @@ return array(
         'serverBaseHost' => 'set_you_server_base_host',
         'serverIp' => 'set_you_server_ip_here',
 		'adminEmail'=>'webmaster@example.com',
+		'configTemplatePath' => dirname(__FILE__).DIRECTORY_SEPARATOR . 'nginx.conf.template',
         'vhostPerPage' => 30,
 	),
 );

@@ -5,7 +5,7 @@
  */
 class UpdateConfigCommand extends CConsoleCommand
 {
-    public function run()
+    public function run($args)
     {
         ConfigHelper::createConfig();
         ConfigHelper::applyConfig();

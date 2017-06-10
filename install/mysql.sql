@@ -22,7 +22,7 @@ CREATE TABLE `vhosts` (
 CREATE TABLE `custom_vhosts_configs` (
   `id` INT(11) UNSIGNED AUTO_INCREMENT NOT NULL,
   `vhost_id` INT(11) UNSIGNED NOT NULL,
-  `config` TEXT DEFAULT '',
+  `config` TEXT,
   PRIMARY KEY (`id`),
   CONSTRAINT `vhost_config` FOREIGN KEY (`vhost_id`) REFERENCES vhosts(`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
